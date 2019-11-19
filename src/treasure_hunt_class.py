@@ -1,8 +1,17 @@
 """Treasure hunt squared 5x5 with OOP."""
-try:
-    from src.treasure_hunt_def import create_list_5x5
-except ModuleNotFoundError:
-    from treasure_hunt_def import create_list_5x5
+
+
+def create_list_5x5():
+    """Create squared 5x5 - list of lists."""
+    list_5x5 = [[] for i in range(5)]
+
+    for i in range(5):
+        input_string = input()
+        input_split = input_string.split()
+        input_split = [int(i) for i in input_split]
+        for position in range(5):
+            list_5x5[i].append(input_split[position])
+    return list_5x5
 
 
 class Solver:
@@ -11,7 +20,7 @@ class Solver:
     treasure_found = False
     path = [11]
 
-    def __init__(self, list_5x5, position=[0, 0]):
+    def __init__(self, list_5x5, position):
         """Initial Solver class."""
         self.list_5x5 = list_5x5
         self.position = position
@@ -35,7 +44,7 @@ class Solver:
 def main():
     """Create list of lists and search treasure there."""
     list_5x5 = create_list_5x5()
-    solver = Solver(list_5x5)
+    solver = Solver(list_5x5, [0, 0])
 
     for i in range(25):
         if not solver.done():

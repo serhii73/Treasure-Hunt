@@ -11,7 +11,7 @@ def test_initial_solver():
         [11, 22, 33, 44, 55],
         [11, 22, 33, 44, 55],
     ]
-    solver = Solver(list_5x5)
+    solver = Solver(list_5x5, [0, 0])
     assert solver.treasure_found == False
     assert solver.path == [11]
     assert solver.list_5x5 == list_5x5
@@ -45,7 +45,7 @@ def test_initial_solver():
 )
 def test_solver_done(list_5x5, expected):
     """Test solver has done or not."""
-    solver = Solver(list_5x5)
+    solver = Solver(list_5x5, [0, 0])
     assert solver.done() == expected
 
 
@@ -58,7 +58,7 @@ def test_solver_jump():
         [42, 22, 43, 32, 41],
         [51, 23, 33, 54, 15],
     ]
-    solver = Solver(list_5x5)
+    solver = Solver(list_5x5, [0, 0])
     assert solver.position == [0, 0]
     assert solver.path == [11]
     assert solver.done() == False
@@ -86,7 +86,7 @@ def test_not_exist_treasure():
         [25, 44, 41, 11, 45],
         [21, 15, 24, 14, 23],
     ]
-    solver = Solver(list_5x5)
+    solver = Solver(list_5x5, [0, 0])
     for i in range(25):
         if not solver.done():
             solver.jump()
